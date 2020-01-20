@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  private API_KEY = "d7ba3d2c4d6840538017893777ed724c";
+  private API_KEY = "";
   private API_ENDPOINT = `https://newsapi.org/v2/top-headlines?q=business&sortBy=publishedAt&apiKey=${this.API_KEY}`;
   //`https://newsapi.org/v2/top-headlines?language=en&country=us&apiKey=${this.API_KEY}`;
   data = [];
