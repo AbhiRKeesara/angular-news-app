@@ -1,15 +1,37 @@
-<div class="container">
-  <div *ngIf="data.length ===0">
+<div class="row">
+    <div class="col-md-12">
+      <h3 class="text-center my-4">Search for News</h3>
+      <form [formGroup]="newsSearchForm" (ngSubmit)="makeTheRequestAndGetData(newsSearchForm.value)">
+        <!-- <div class="form-group">
+          <input class="form-control" type="text" id="newsCategory" aria-describedby="NewsCategory"
+            placeholder="Please input a category" formControlName="category" />
+        </div> -->
+        <mat-form-field>
+          <mat-select placeholder="Select" [(value)]="selected">
+          <mat-option *ngFor="let category of categories" [value]="category.value">
+      {{category.viewValue}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+        <p>You selected: {{selected}}</p>
+        <div class="text-center">
+          <button type="submit" class="btn btn-success btn-md" (click)="searchButtonClicked()">
+            Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+<div class="container" *ngIf="showResultsDiv">
+  <div *ngIf="data.length === 0">
     <p>
       Loading data...
     </p>
   </div>
-  <div *ngFor="let article of data" class="card">
-    <img src="{{article.urlToImage}}">
+  <mat-card *ngFor="let article of data" class="card">
+    <img src="{{ article.urlToImage }}" />
     <div class="card-body">
-      <h3>{{article.title}}</h3>
-      <p> {{ article.description }}</p>
-      <a href="{{article.url}}">Read story</a>
+      <h3>{{ article.title }}</h3>
+      <p>{{ article.description }}</p>
+      <a href="{{ article.url }}">Read story</a>
     </div>
-  </div>
+  </mat-card>
 </div>
