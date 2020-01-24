@@ -1,29 +1,29 @@
 <div class="row">
-    <div class="col-md-12">
-        <mat-form-field class="formfield">
-          <mat-select placeholder="Select" [(value)]="selected">
-          <mat-option *ngFor="let category of categories" [value]="category.value">
-      {{category.viewValue}}</mat-option>
-        </mat-select>
-        </mat-form-field>
-        <div class="center">
-          <button type="submit" class="btn btn-success btn-md" (click)="searchButtonClicked(selected)">
-            Search</button>
-        </div>
+  <div class="col-md-12">
+    <mat-form-field class="formfield">
+      <mat-select placeholder="Select" [(value)]="selected">
+        <mat-option *ngFor="let category of categories" [value]="category.value">
+          {{category.viewValue}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="center">
+      <button type="submit" class="btn btn-success btn-md" (click)="searchButtonClicked(selected)">
+        Search</button>
     </div>
   </div>
+</div>
 <div *ngIf="showResultsDiv">
-    <p>
-      Loading data...
-    </p>
-  </div>
+  <p>
+    Loading data...
+  </p>
+</div>
 <div class="container" *ngIf="!showResultsDiv">
   <mat-card *ngFor="let article of data" class="card">
     <img src="{{ article.urlToImage }}" />
     <div class="card-body">
       <h3>{{ article.title }}</h3>
       <p>{{ article.description }}</p>
-      <a href="{{ article.url }}">Read story</a>
+      <a (click)="openDialog(article)">Read story</a>
     </div>
   </mat-card>
 </div>

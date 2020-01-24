@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { delay } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { NewsModalComponent } from '../news-modal/news-modal.component';
 
-export interface Category{
-  value: String;
-  viewValue: String;
+export interface Category {
+  value: string;
+  viewValue: string;
 }
 
 @Component({
@@ -14,40 +16,52 @@ export interface Category{
 })
 export class HomeComponent implements OnInit {
 
-  categories: Category[]=[
-    {value: 'science', viewValue: 'science'},
-    {value: 'entertainment', viewValue: 'entertainment'},
-    {value: 'general', viewValue: 'general'},
-    {value: 'health', viewValue: 'health'},
-    {value: 'business', viewValue: 'business'},
-    {value: 'sports', viewValue: 'sports'},
-    {value: 'technology', viewValue: 'technology'}
-    ]
+  categories: Category[] = [
+    { value: 'science', viewValue: 'science' },
+    { value: 'entertainment', viewValue: 'entertainment' },
+    { value: 'general', viewValue: 'general' },
+    { value: 'health', viewValue: 'health' },
+    { value: 'business', viewValue: 'business' },
+    { value: 'sports', viewValue: 'sports' },
+    { value: 'technology', viewValue: 'technology' }
+  ]
 
   private API_KEY = "";
   showResultsDiv: boolean = false;
-  private API_ENDPOINT ;
+  private API_ENDPOINT;
   data = [];
+  public passTheURL: any;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, public dialog: MatDialog) { }
 
-  makeTheRequestAndGetData(formValue){
-   return this.httpClient.get(`https://newsapi.org/v2/top-headlines?category=${formValue}&
+  makeTheRequestAndGetData(formValue) {
+    return this.httpClient.get(`https://newsapi.org/v2/top-headlines?category=${formValue}&
    language=en&country=us&sortBy=publishedAt&apiKey=${this.API_KEY}`).pipe(delay(3000)).subscribe((data) => {
       console.log(data['articles']);
       this.data = data['articles'];
-      this.showResultsDiv= false;
+      this.showResultsDiv = false;
     });
-   
+
   }
 
-  searchButtonClicked(formValue){
+  searchButtonClicked(formValue) {
     this.showResultsDiv = true;
     this.makeTheRequestAndGetData(formValue);
   }
 
   ngOnInit() {
-   
+
+  }
+
+  openDialog(urlObject) {
+
+    const dialogRef = this.dialog.open(NewsModalComponent, {
+      data: { url: urlObject.url },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }
