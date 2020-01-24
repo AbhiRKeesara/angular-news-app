@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     {value: 'technology', viewValue: 'technology'}
     ]
 
-  private API_KEY = "d7ba3d2c4d6840538017893777ed724c";
+  private API_KEY = "";
   showResultsDiv: boolean = false;
   private API_ENDPOINT ;
   data = [];
