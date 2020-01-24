@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { delay } from 'rxjs/operators';
-import {MatDialog} from '@angular/material/dialog';
 
 export interface Category{
   value: String;
@@ -31,7 +29,7 @@ export class HomeComponent implements OnInit {
   private API_ENDPOINT ;
   data = [];
 
-  constructor(private httpClient: HttpClient,public dialog: MatDialog) { }
+  constructor(private httpClient: HttpClient) { }
 
   makeTheRequestAndGetData(formValue){
    return this.httpClient.get(`https://newsapi.org/v2/top-headlines?category=${formValue}&
