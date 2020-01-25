@@ -13,9 +13,7 @@
   </div>
 </div>
 <div *ngIf="showResultsDiv">
-  <p>
-    Loading data...
-  </p>
+  <ghost-list [ghosts]="ghosts" fxLayout="row wrap"></ghost-list>
 </div>
 <div class="container" *ngIf="!showResultsDiv">
   <mat-card *ngFor="let article of data" class="card">

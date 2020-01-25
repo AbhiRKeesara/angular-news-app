@@ -28,8 +28,8 @@ export class HomeComponent implements OnInit {
 
   private API_KEY = "";
   showResultsDiv: boolean = false;
-  private API_ENDPOINT;
   data = [];
+  ghosts = [];
   public passTheURL: any;
 
   constructor(private httpClient: HttpClient, public dialog: MatDialog) { }
@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
   }
 
   searchButtonClicked(formValue) {
+    this.ghosts = new Array(30);
     this.showResultsDiv = true;
     this.makeTheRequestAndGetData(formValue);
   }
