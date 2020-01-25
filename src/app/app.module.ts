@@ -8,6 +8,8 @@ import { AboutComponent } from './about/about.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { GhostListComponent } from './home/ghost-list/ghost-list.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
@@ -19,6 +21,7 @@ import { NewsModalComponent } from './news-modal/news-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,8 @@ import { MatButtonModule } from '@angular/material/button';
     HeaderComponent,
     NavbarComponent,
     FooterComponent,
-    NewsModalComponent
+    NewsModalComponent,
+    GhostListComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatDialogModule,
     MatButtonModule,
+
   ],
   entryComponents: [NewsModalComponent],
   providers: [],
