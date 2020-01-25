@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-news-modal',
@@ -8,10 +8,13 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class NewsModalComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: string) { }
+  constructor(public dialogRef: MatDialogRef<NewsModalComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
 
   ngOnInit() {
-    console.log(this.data.url);
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

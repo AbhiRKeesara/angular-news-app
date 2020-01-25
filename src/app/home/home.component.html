@@ -7,7 +7,7 @@
       </mat-select>
     </mat-form-field>
     <div class="center">
-      <button type="submit" class="btn btn-success btn-md" (click)="searchButtonClicked(selected)">
+      <button mat-raised-button type="submit" (click)="searchButtonClicked(selected)">
         Search</button>
     </div>
   </div>
@@ -23,7 +23,7 @@
     <div class="card-body">
       <h3>{{ article.title }}</h3>
       <p>{{ article.description }}</p>
-      <a (click)="openDialog(article)">Read story</a>
+      <button mat-raised-button color="primary" (click)="openDialog(article)">Read story</button>
     </div>
   </mat-card>
 </div>
