@@ -11,10 +11,13 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { NewsModalComponent } from './news-modal/news-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import {MatSelectModule} from '@angular/material/select';
     AboutComponent,
     HeaderComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    NewsModalComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,10 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
+  entryComponents: [NewsModalComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
